@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "8620978c-6137-4dcf-9b94-d08bb674578e",
+		"name": "Big Chat Brasil",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18457368"
+	},
+	"item": [
+		{
+			"name": "SMS Simulator",
+			"item": [
+				{
+					"name": "Send Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"senderPhoneNumber\": \"44999888777\",\n    \"recipientPhoneNumber\": \"44777888999\",\n    \"messageText\": \"This is a message for you!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:8081/sms",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8081",
+							"path": [
+								"sms"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Backoffice",
+			"item": [
+				{
+					"name": "Get Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:8080/customers",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8080",
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:8080/customers/2",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Credit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\": 40.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:8080/customers/3/credit",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"3",
+								"credit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Switch Plan",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:8080/customers/4/plan",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8080",
+							"path": [
+								"customers",
+								"4",
+								"plan"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Send Message",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageSender\" : {\n        \"customerId\" : 2\n    },\n    \"messageRecipient\" : {\n        \"recipientPhone\" : \"44123123123\"\n    },\n    \"isWhatsapp\" : false,\n    \"messageText\" : \"This is a message for you\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}:8080/message",
+					"host": [
+						"{{host}}"
+					],
+					"port": "8080",
+					"path": [
+						"message"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
