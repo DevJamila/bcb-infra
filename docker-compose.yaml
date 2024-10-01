@@ -1,0 +1,18 @@
+services:
+  bcb-postgres-db:
+    image: bcb-postgres-db
+    build: ./
+    ports: 
+      - "5432:5432"
+  bcb-sms-simulator:
+    image: bcb-sms-simulator
+    build: ../bcb-sms-simulator/
+    ports: 
+      - "8081:8081"
+  bcb-core-app:
+    image: bcb-core-app
+    build: ../bcb-core-app/
+    ports: 
+      - "8080:8080"
+    depends_on:
+      - bcb-postgres-db
