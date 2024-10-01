@@ -9,7 +9,7 @@ CREATE TABLE bcb_customer (
   company_document VARCHAR(14)
 );
 
-CREATE TABLE customer_plan(
+CREATE TABLE bcb_customer_plan(
   customer_plan_id SERIAL NOT NULL PRIMARY KEY, 
   customer_id INTEGER NOT NULL REFERENCES bcb_customer(customer_id), 
   plan_type TEXT NOT NULL,
@@ -19,6 +19,7 @@ CREATE TABLE customer_plan(
 CREATE TABLE bcb_message(
   message_id SERIAL NOT NULL PRIMARY KEY, 
   customer_id INTEGER NOT NULL REFERENCES bcb_customer(customer_id), 
+  recipient_phone TEXT NOT NULL,
   is_whatsapp BOOLEAN NOT NULL,
   message_text TEXT NOT NULL,
   message_status TEXT NOT NULL,
@@ -31,7 +32,7 @@ VALUES ('Fulano da Silva', 'fulano@mail.com',	'44999990000', '39397016024', fals
        ('Beltrano Seunome',	'beltrano@mail.com', '44998877321', '06383595032', true, 'Beltra Tur', '88206351000102'),
        ('Maria Irradiante',	'maria@mail.com',	'44988877123', '72851642081', false, '', '');
 
-INSERT INTO customer_plan (customer_id, plan_type, amount)
+INSERT INTO bcb_customer_plan (customer_id, plan_type, amount)
 VALUES (1, 'POSTPAID', 10.00),
        (2, 'POSTPAID', 20.00),
        (3, 'PREPAID', 0.00),
