@@ -130,31 +130,52 @@
 			]
 		},
 		{
-			"name": "Send Message",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"messageSender\" : {\n        \"customerId\" : 2\n    },\n    \"messageRecipient\" : {\n        \"recipientPhone\" : \"44123123123\"\n    },\n    \"isWhatsapp\" : false,\n    \"messageText\" : \"This is a message for you\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Client",
+			"item": [
+				{
+					"name": "Send Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"messageSender\" : {\n        \"customerId\" : 2\n    },\n    \"messageRecipient\" : {\n        \"recipientPhone\" : \"44123123123\"\n    },\n    \"isWhatsapp\" : false,\n    \"messageText\" : \"This is a message for you\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:8080/message",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8080",
+							"path": [
+								"message"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{host}}:8080/message",
-					"host": [
-						"{{host}}"
-					],
-					"port": "8080",
-					"path": [
-						"message"
-					]
+				{
+					"name": "Get Message History",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

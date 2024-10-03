@@ -26,6 +26,13 @@ CREATE TABLE bcb_message(
   request_timestamp TIMESTAMP NOT NULL
 );
 
+CREATE TABLE bcb_user(
+  user_id SERIAL NOT NULL PRIMARY KEY,
+  bcb_username TEXT NOT NULL,
+  bcb_password TEXT NOT NULL,
+  customer_id INTEGER NOT NULL REFERENCES bcb_customer(customer_id)
+);
+
 INSERT INTO bcb_customer (customer_name, customer_email, customer_phone, customer_document, is_company, company_name, company_document)
 VALUES ('Fulano da Silva', 'fulano@mail.com',	'44999990000', '39397016024', false, '', ''),
        ('Ciclana de Souza',	'ciclana@mail.com',	'44999888777', '73464924041', true, 'Ciclana Modas', '92715301000110'),
@@ -37,3 +44,9 @@ VALUES (1, 'POSTPAID', 10.00),
        (2, 'POSTPAID', 20.00),
        (3, 'PREPAID', 0.00),
        (4, 'PREPAID', 0.25);
+
+INSERT INTO bcb_user (bcb_username, bcb_password, customer_id)
+VALUES ('fulano@mail.com', 'senha123', 1),
+       ('ciclana@mail.com', 'senha123', 2),
+       ('beltrano@mail.com', 'senha123', 3),
+       ('maria@mail.com', 'senha123', 4);

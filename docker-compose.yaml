@@ -16,3 +16,8 @@ services:
       - "8080:8080"
     depends_on:
       - bcb-postgres-db
+  bcb-ui-app:
+    image: bcb-ui-app
+    build: ../bcb-ui-app/
+    ports:
+      - "3000:3000"
